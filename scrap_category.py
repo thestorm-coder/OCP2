@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 
 
 def scrap_main_category():
-    
+
     for link in generate_cat_links():
         print(link)
         reponse = requests.get(link)
-        
+
         if reponse.ok:
             soup = BeautifulSoup(reponse.content, "html.parser")
 
@@ -23,4 +23,3 @@ def generate_cat_links():
     while True:
         nb += 1
         yield f"http://books.toscrape.com/catalogue/page-{nb}.html"
-

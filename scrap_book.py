@@ -30,22 +30,23 @@ def scrap_book(url):
 
     response.raise_for_status()
     if response.ok:
-    
+
         soup = BeautifulSoup(response.content, "html.parser")
 
         upc = soup.select_one("table tr:nth-child(1) > td").text
         title = soup.select_one('h1').text
         prince_including_tax = soup.select_one("table > tr:nth-child(4) > td").text
         price_exluding_tax = soup.select_one("table > tr:nth-child(3) > td").text
-        number_available = int(soup.select_one("table > tr:nth-child(6) > td").text.removeprefix("In stock (").removesuffix(" available)"))
+        number_available = int(
+            soup.select_one("table > tr:nth-child(6) > td").text.removeprefix("In stock (").removesuffix(" available)"))
         product_description = soup.select_one("meta:nth-child(4)")["content"]
         category = soup.select_one('div > ul > li:nth-child(3) > a').text
         review_rating = soup.select_one(".star-rating")["class"][1]
         image_url = soup.select_one("#product_gallery img")["src"]
 
         return {
-            "upc": upc, 
-            "title": title, 
+            "upc": upc,
+            "title": title,
             "price_including_tax": prince_including_tax,
             "price_excluding_tax": price_exluding_tax,
             "number_available": number_available,
