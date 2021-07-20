@@ -5,12 +5,12 @@ URL = "http://books.toscrape.com/catalogue/the-book-of-basketball-the-nba-accord
 
 
 def relative_url_to_absolute_url(url):
-    url_relative = "../../media/cache/73/bb/73bbe0a70806f8a732b9a7a7a343c5ec.jpg"
-    reponse = url_relative.replace("../..", "http://books.toscrape.com")
-    return reponse
+    """ permet de convertir une URL relative en URL absolue"""
+    return url.replace("../..", "http://books.toscrape.com")
 
 
 def str_to_int(number_str):
+    """ converti les nombre entier en chaine de caractère"""
     if number_str == 'Five':
         return 5
     elif number_str == "Four":
@@ -26,6 +26,7 @@ def str_to_int(number_str):
 
 
 def scrap_book(url):
+    """ permet l'extraction des données essentielles d'un livre """
     response = requests.get(url)
 
     response.raise_for_status()

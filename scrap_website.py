@@ -6,6 +6,7 @@ import time
 
 
 def scrap_website():
+    """ permets de scraper l'entière du site book to scrape"""
     start_time = time.time()
     categories = {}
     for book_url in scrap_main_category():

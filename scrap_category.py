@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def scrap_main_category():
+    """ permet d'obtenir tous les liens des différents catégories du site wwww.booktoscrape.com """
 
     for link in generate_cat_links():
         print(link)
@@ -19,6 +20,7 @@ def scrap_main_category():
 
 
 def generate_cat_links():
+    """une fonction génératrice qui renvoie l'ensemble des urls du site et leurs composants"""
     nb = 0
     while True:
         nb += 1
